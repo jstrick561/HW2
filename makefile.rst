@@ -13,7 +13,7 @@ The first thing we need to do is identify the things we want to build in this
 project. The major program components in this project will be collected into a 
 single library file.
 
-We start off this ``Makefile`` by setting up names for these products:
+We start off this ``Makefile`` by setting up names for these products.::
 
 	# what to build
 	USRAPP	:= cpusim
@@ -29,7 +29,7 @@ Creating File Name Lists
 
 We could create names for lists of files we need to either have in the project
 code directories, or build as part of constructing the products. But ``make`` 
-can do this. Here is how we build alist of C++ files we need to compile:
+can do this. Here is how we build alist of C++ files we need to compile.::
 
 	# project directories
 	SRC		:=	src
@@ -60,7 +60,7 @@ Generating Dependencies Lists
 
 We do want our program to compile smoothly but some files will not compile 
 unless certain items are present. Therefore, we set our dependencies to make
-sure things are completed before the next action can happen.
+sure things are completed before the next action can happen.::
 
 	# generate a list of dependencies
 	UDEPS	:= $(UOBJS:.o=.d)
@@ -74,7 +74,7 @@ need text............
 Tools and Flags Needed
 ======================
 
-We need tools.......
+We need tools.......a.::
 
 	# tools
 	CXX	:= g++
@@ -92,7 +92,7 @@ need text............
 =======================
 
 There are several ways to run our Make file depending on what we want to 
-accomplish (compiling and running, testing, debugging, cleaning our system).
+accomplish (compiling and running, testing, debugging, cleaning our system).::
 
 	.PHONY: all
 	all:	directories $(USRAPP) $(TSTAPP)
@@ -149,6 +149,9 @@ need text............
 What is this?
 =============
 
+what is this?::
+
 	# include compiler generated dependencies
 	-include $(BLD)/*.d
 
+need text............
