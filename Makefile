@@ -34,7 +34,7 @@ DEPS	:= $(UDEPS) $(LDEPS) $(TDEPS)
 # tools
 CXX	:= g++
 AR	:= ar
-RM	:= RM -f
+RM	:= rm -f
 
 CFLAGS	:= -std=c++11 -I $(INC)
 LFLAGS	:= -L $(LIB) $(LIBAR)
