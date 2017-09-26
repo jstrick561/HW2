@@ -14,7 +14,7 @@ single library file.
 
 We start off this ``Makefile`` by setting up names for these products:
 
-.. literalinclude::    ~/cpusim/Makefile
+.. literalinclude:: Makefile
    :start-line: 3 
    :end-line: 6
 
@@ -27,7 +27,7 @@ and I would rather let ``make`` figure those things out. Fortunately, ``make``
 has the ability to create lists by looking into your directories to see what is
 there. Here is how we build alist of C++ files we need to compile:
 
-.. literalinclude::    ~/cpusim/Makefile
+.. literalinclude::  Makefile
 	:start-line: 3 
 	:end-line: 6
 
