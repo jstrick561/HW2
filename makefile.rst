@@ -2,34 +2,36 @@
 Makefile
 ========
 
-This projects ``Makefile`` is slightly modified from one received by Roie
-Black and it handles a lot of the management details you need to set up a 
-complicated project.
+This projects ``Makefile`` (received from Professor Roie Black) handles a lot 
+of the management details you need to set up a complicated project.
+
 
 Identifying the build products
 ==============================
 
-The first thing we need to do is identify the things we want to build in this
-project. The major program components in this project will be collected into a 
-single library file.
+First we need to identify the things we want to build in this project. The major 
+program components in this project will be collected into a single library file.
 
-We start off this ``Makefile`` by setting up names for these products.::
+We start the ``Makefile`` by setting up names for the files created (executables 
+and archives) in this project::
 
 	# what to build
 	USRAPP	:= cpusim
 	TSTAPP	:= sim_test
 	LIBAR	:= cpusim_lib.a
 
-**cpusim** is the executable name of the main file.
-**sim_test** is the executable name of the testing files.
-**cpusim_lib.a** is the .........
+**cpusim** is the executable name of the main file.  **sim_test** is the executable 
+name of the testing files.  **cpusim_lib.a** is the name of the archive file (which 
+contains all the ``.o`` files
+
 
 Creating File Name Lists
 ========================
 
 We could create names for lists of files we need to either have in the project
 code directories, or build as part of constructing the products. But ``make`` 
-can do this. Here is how we build alist of C++ files we need to compile.::
+can do this. Here is how we build the diretory structure we want for our project
+and a list of C++ files we need to compile::
 
 	# project directories
 	SRC		:=	src
@@ -51,16 +53,24 @@ can do this. Here is how we build alist of C++ files we need to compile.::
 	TOBJS = $(TSRCS:%.cpp=$(BLD)/%.o)
 	OBJS  = $(UOBJS) $(LOBJS) $(TOBJS)
 
-need text............
+Project directories are the names of the directories in our project tree (c:/projectname/src, 
+etc.). By naming ``SRC`` equal to ``src`` we do not need to change the whole 
+file if we need to change the name of our source directory. The same goes for 
+all the other directories defined. ``SDIRS`` make sure all these directories 
+are created in our project (see below #build any needed directories).
 
+``USRCS``, ``LSRCS`` and ``TSRCS`` defines where and what files to compile.
+
+``UOBJS``, ``LOBJS``, and ``TOBJS`` defines where to put the object files, once 
+they are compiled. ``OBJS`` puts the previous places into one variable.
 
 
 Generating Dependencies Lists
 =============================
 
 We do want our program to compile smoothly but some files will not compile 
-unless certain items are present. Therefore, we set our dependencies to make
-sure things are completed before the next action can happen.::
+unless certain items (files) are present. Therefore, we set our dependencies to make
+sure things are completed before the next action can happen. ::
 
 	# generate a list of dependencies
 	UDEPS	:= $(UOBJS:.o=.d)
@@ -68,31 +78,44 @@ sure things are completed before the next action can happen.::
 	TDEPS	:= $(.OBJS:.o=.d)
 	DEPS	:= $(UDEPS) $(LDEPS) $(TDEPS)
 
-need text............
+****************************** NEED TEXT HERE **********************************************************
 
 
 Tools and Flags Needed
 ======================
 
-We need tools.......a.::
+The tools we want to use are set up as variable, once again so we can change them
+in one place as opposed to all over the ``makefile``. ::
 
 	# tools
 	CXX	:= g++
 	AR	:= ar
 	RM	:= rm -f
+	PIP	:= pip
+	SPHINX	:= sphinx-build
+	VENV	:= virtualenv
 
 	CFLAGS	:= -std=c++11 -I $(INC)
 	LFLAGS	:= -L $(LIB) $(LIBAR)
 
-need text............
+``CXX`` is the compiler we want to use. ``AR`` is the archive program to use.  
+``RM`` is the command in linux to remove files so we can keep our project 
+clean of unnecessary files.  ``PIP``, ``SPHINX`` and ``VENV`` are for Sphinx
+documentation which is not being used at this time.  ``CFLAGS`` are the compiling 
+flags we want to set in our compile command and ``LFLAGS`` are the linking flags 
+we want to set in our compile command.
 
 
+**Makefile** Rules
+==================
 
-**make** Runs Available
-=======================
-
-There are several ways to run our Make file depending on what we want to 
-accomplish (compiling and running, testing, debugging, cleaning our system).::
+Makefile Rules are set up in the following shape (must have tab before recipe)::
+	target : prerequisites
+		recipe
+``make`` will perform the first rule it comes to.  If you want to run a specific 
+rule, enter the rule name after ``make``.  Example, ``make run`` will execute the 
+``run`` rule below (``.PHONY: run`` keeps ``make`` from doing something with the 
+target, usually a file name, named ``run``)::
 
 	.PHONY: all
 	all:	directories $(USRAPP) $(TSTAPP)
@@ -143,15 +166,68 @@ accomplish (compiling and running, testing, debugging, cleaning our system).::
 		-@echo TDEPS = $(TDEPS)
 		-@echo DIRS  = $(DIRS)
 
-need text............
+	# build rules for Sphinx documentation
+	.PHONY:	install
+	install:	docs/_venv
+		cd docs && source _venv/bin/activate && \
+		$(PIP) install -r requirements.txt && \
+		mkdir -p _static && cp ../files/conf.py . && \
+		cp ../files/index.rst .
+
+	docs/_venv:
+		$(VENV)	docs/_venv
+
+	html:
+		cd docs && source _venv/bin/activate && \
+		$(SPHINX) -b html -d ../_build/doctrees . ../_build/html
+
+ 
+``$@`` means left side of ``:`` and ``$^`` means right side of ``:``.
+****************************** NEED TEXT HERE **********************************************************
 
 
 What is this?
 =============
 
-what is this?::
+what is this? ::
 
 	# include compiler generated dependencies
 	-include $(BLD)/*.d
 
-need text............
+****************************** NEED TEXT HERE **********************************************************
+iii
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
