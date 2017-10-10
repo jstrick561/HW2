@@ -2,35 +2,34 @@
 Makefile
 ========
 
-This projects ``Makefile`` (received from Professor Roie Black) handles a lot 
-of the management details you need to set up a complicated project.
+.. contents::
+
+
+Introduction
+************
+
+This projects ``Makefile`` (received from Professor Roie Black) handles a lot of the management details you need to set up a complicated project.
 
 
 Identifying the build products
 ==============================
 
-First we need to identify the things we want to build in this project. The major 
-program components in this project will be collected into a single library file.
+First we need to identify the things we want to build in this project. The major program components in this project will be collected into a single library file.
 
-We start the ``Makefile`` by setting up names for the files created (executables 
-and archives) in this project::
+We start the ``Makefile`` by setting up names for the files created (executables and archives) in this project::
 
 	# what to build
 	USRAPP	:= cpusim
 	TSTAPP	:= sim_test
 	LIBAR	:= cpusim_lib.a
 
-**cpusim** is the executable name of the main file.  **sim_test** is the executable 
-name of the testing files.  **cpusim_lib.a** is the name of the archive file (which 
-contains all the ``.o`` files
+``cpusim`` is the executable name of the main file.  ``sim_test`` is the executable name of the testing files.  **cpusim_lib.a** is the name of the archive file (which contains all the ``.o`` files).
 
 
 Creating File Name Lists
 ========================
 
-We could create names for lists of files we need to either have in the project
-code directories, or build as part of constructing the products. But ``make`` 
-can do this. Here is how we build the diretory structure we want for our project
+We could create names for lists of files we need to either have in the project code directories, or build as part of constructing the products. But ``make`` can do this. Here is how we build the diretory structure we want for our project
 and a list of C++ files we need to compile::
 
 	# project directories
@@ -53,24 +52,17 @@ and a list of C++ files we need to compile::
 	TOBJS = $(TSRCS:%.cpp=$(BLD)/%.o)
 	OBJS  = $(UOBJS) $(LOBJS) $(TOBJS)
 
-Project directories are the names of the directories in our project tree (c:/projectname/src, 
-etc.). By naming ``SRC`` equal to ``src`` we do not need to change the whole 
-file if we need to change the name of our source directory. The same goes for 
-all the other directories defined. ``SDIRS`` make sure all these directories 
-are created in our project (see below #build any needed directories).
+Project directories are the names of the directories in our project tree (c:/projectname/src, etc.). By naming ``SRC`` equal to ``src`` we do not need to change the whole file if we need to change the name of our source directory. The same goes for all the other directories defined. ``SDIRS`` make sure all these directories are created in our project (see below #build any needed directories).
 
 ``USRCS``, ``LSRCS`` and ``TSRCS`` defines where and what files to compile.
 
-``UOBJS``, ``LOBJS``, and ``TOBJS`` defines where to put the object files, once 
-they are compiled. ``OBJS`` puts the previous places into one variable.
+``UOBJS``, ``LOBJS``, and ``TOBJS`` defines where to put the object files, once they are compiled. ``OBJS`` puts the previous places into one variable.
 
 
 Generating Dependencies Lists
 =============================
 
-We do want our program to compile smoothly but some files will not compile 
-unless certain items (files) are present. Therefore, we set our dependencies to make
-sure things are completed before the next action can happen. ::
+We do want our program to compile smoothly but some files will not compile unless certain items (files) are present. Therefore, we set our dependencies to make sure things are completed before the next action can happen. ::
 
 	# generate a list of dependencies
 	UDEPS	:= $(UOBJS:.o=.d)
@@ -84,8 +76,7 @@ sure things are completed before the next action can happen. ::
 Tools and Flags Needed
 ======================
 
-The tools we want to use are set up as variable, once again so we can change them
-in one place as opposed to all over the ``makefile``. ::
+The tools we want to use are set up as variable, once again so we can change them in one place as opposed to all over the ``makefile``. ::
 
 	# tools
 	CXX	:= g++
@@ -98,12 +89,8 @@ in one place as opposed to all over the ``makefile``. ::
 	CFLAGS	:= -std=c++11 -I $(INC)
 	LFLAGS	:= -L $(LIB) $(LIBAR)
 
-``CXX`` is the compiler we want to use. ``AR`` is the archive program to use.  
-``RM`` is the command in linux to remove files so we can keep our project 
-clean of unnecessary files.  ``PIP``, ``SPHINX`` and ``VENV`` are for Sphinx
-documentation which is not being used at this time.  ``CFLAGS`` are the compiling 
-flags we want to set in our compile command and ``LFLAGS`` are the linking flags 
-we want to set in our compile command.
+``CXX`` is the compiler we want to use. ``AR`` is the archive program to use.  ``RM`` is the command in linux to remove files so we can keep our project clean of unnecessary files.  ``PIP``, ``SPHINX`` and ``VENV`` are for Sphinx
+documentation which is not being used at this time.  ``CFLAGS`` are the compiling flags we want to set in our compile command and ``LFLAGS`` are the linking flags we want to set in our compile command.
 
 
 **Makefile** Rules
@@ -112,10 +99,7 @@ we want to set in our compile command.
 Makefile Rules are set up in the following shape (must have tab before recipe)::
 	target : prerequisites
 		recipe
-``make`` will perform the first rule it comes to.  If you want to run a specific 
-rule, enter the rule name after ``make``.  Example, ``make run`` will execute the 
-``run`` rule below (``.PHONY: run`` keeps ``make`` from doing something with the 
-target, usually a file name, named ``run``)::
+``make`` will perform the first rule it comes to.  If you want to run a specific rule, enter the rule name after ``make``.  Example, ``make run`` will execute the ``run`` rule below (``.PHONY: run`` keeps ``make`` from doing something with the target, usually a file name, named ``run``)::
 
 	.PHONY: all
 	all:	directories $(USRAPP) $(TSTAPP)
@@ -196,38 +180,3 @@ what is this? ::
 
 ****************************** NEED TEXT HERE **********************************************************
 iii
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
