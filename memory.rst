@@ -51,7 +51,7 @@ Accessors
 
 The process here is to read data in the array (memory), which takes time, and only return the data when the time has expired. So in the program that calls these functions, would call ``read``, ``ready``, ``ready``, ``ready`` (until ready comes back true) and then ``read_valid`` to get the data.
 
-The parameters passed in are a  16-bit variable containing the address in the array where the data resides and the size of that data (in bytes, 1 or 2). Remember actions can only take place is no other actions are in progress (``delay`` = 0). ``rdata`` is used to pass the data from ``read`` to ``read_valid``. ``delay`` is set to the ``read_access_time`` passed in the constructor to represent the time it take to access the register or RAM. Then depending on whether the call was to return a 8-bit or 16-bit field, will determine how to fill ``rdata`` (zero filling the upper 8-bits if only a 8-bit field was requested). ::
+The parameters passed in are a  16-bit variable containing the address in the array where the data resides and the size of that data (in bytes, 1 for 8-bit and 2 for 16-bit). Remember actions can only take place is no other actions are in progress (``delay`` = 0). ``rdata`` is used to pass the data from ``read`` to ``read_valid``. ``delay`` is set to the ``read_access_time`` passed in the constructor to represent the time it take to access the register or RAM. Then depending on whether the call was to return a 8-bit or 16-bit field, will determine how to fill ``rdata`` (zero filling the upper 8-bits if only a 8-bit field was requested). ::
 
 	// accessors
 	void Memory::read(uint16_t address, int size) {
@@ -100,7 +100,7 @@ Mutators
 
 The process here is to write data in the array (memory), which again, takes time. So in the program that calls these functions, would call ``write``, ``ready``, ``ready``, ``ready`` (until ready comes back true) and then and only then can processing continue.
 
-The parameters passed in are a  16-bit variable containing the address in the array where the data is to reside, the size of that data (in bytes, 1 or 2) and a 16-bit variable that is the data itself. Remember actions can only take place is no other actions are in progress (``delay`` = 0). ``delay`` is set to the ``write_access_time`` passed in the constructor to represent the time it take to access the register or RAM. The first thing that happens it the 16-bit variable is separated into 2 8-bit variables and then depending on whether the data to store is a 8-bit or 16-bit field, will determine how to fill populalte the array (again using little endian and only populating one address if only a 8-bit field was sent). ::
+The parameters passed in are a  16-bit variable containing the address in the array where the data is to reside, the size of that data (in bytes, 1 for 8-bit and 2 for 16-bit) and a 16-bit variable that is the data itself. Remember actions can only take place is no other actions are in progress (``delay`` = 0). ``delay`` is set to the ``write_access_time`` passed in the constructor to represent the time it take to access the register or RAM. The first thing that happens it the 16-bit variable is separated into 2 8-bit variables and then depending on whether the data to store is a 8-bit or 16-bit field, will determine how to fill populalte the array (again using little endian and only populating one address if only a 8-bit field was sent). ::
 
 	// mutators
 	void Memory::write(uint16_t address, int size, uint16_t data) {

@@ -29,8 +29,7 @@ We start the ``Makefile`` by setting up names for the files created (executables
 Creating File Name Lists
 ========================
 
-We could create names for lists of files we need to either have in the project code directories, or build as part of constructing the products. But ``make`` can do this. Here is how we build the diretory structure we want for our project
-and a list of C++ files we need to compile::
+We could create names for lists of files we need to either have in the project code directories, or build as part of constructing the products. But ``make`` can do this. Here is how we build the diretory structure we want for our project and a list of C++ files we need to compile::
 
 	# project directories
 	SRC		:=	src
@@ -52,7 +51,7 @@ and a list of C++ files we need to compile::
 	TOBJS = $(TSRCS:%.cpp=$(BLD)/%.o)
 	OBJS  = $(UOBJS) $(LOBJS) $(TOBJS)
 
-Project directories are the names of the directories in our project tree (c:/projectname/src, etc.). By naming ``SRC`` equal to ``src`` we do not need to change the whole file if we need to change the name of our source directory. The same goes for all the other directories defined. ``SDIRS`` make sure all these directories are created in our project (see below #build any needed directories).
+Project directories are the names of the directories in our project tree (c:/projectname/src, etc.). By naming ``SRC`` equal to ``src`` (which is the source directory) we do not need to change the whole file if we need to change the name of our source directory. The same goes for all the other directories defined. ``DIRS`` make sure all these directories are created in our project (see below #build any needed directories).
 
 ``USRCS``, ``LSRCS`` and ``TSRCS`` defines where and what files to compile.
 
@@ -62,15 +61,13 @@ Project directories are the names of the directories in our project tree (c:/pro
 Generating Dependencies Lists
 =============================
 
-We do want our program to compile smoothly but some files will not compile unless certain items (files) are present. Therefore, we set our dependencies to make sure things are completed before the next action can happen. ::
+We do want our program to compile smoothly but some files will not compile unless certain items (files) are present. Therefore, we set our dependencies to make sure things are completed before the next action can happen (these are included in the ``-include`` below). ::
 
 	# generate a list of dependencies
 	UDEPS	:= $(UOBJS:.o=.d)
 	LDEPS	:= $(LOBJS:.o=.d)
 	TDEPS	:= $(.OBJS:.o=.d)
 	DEPS	:= $(UDEPS) $(LDEPS) $(TDEPS)
-
-****************************** NEED TEXT HERE **********************************************************
 
 
 Tools and Flags Needed
@@ -89,8 +86,7 @@ The tools we want to use are set up as variable, once again so we can change the
 	CFLAGS	:= -std=c++11 -I $(INC)
 	LFLAGS	:= -L $(LIB) $(LIBAR)
 
-``CXX`` is the compiler we want to use. ``AR`` is the archive program to use.  ``RM`` is the command in linux to remove files so we can keep our project clean of unnecessary files.  ``PIP``, ``SPHINX`` and ``VENV`` are for Sphinx
-documentation which is not being used at this time.  ``CFLAGS`` are the compiling flags we want to set in our compile command and ``LFLAGS`` are the linking flags we want to set in our compile command.
+``CXX`` is the compiler we want to use. ``AR`` is the archive program to use.  ``RM`` is the command in linux to remove files so we can keep our project clean of unnecessary files.  ``PIP``, ``SPHINX`` and ``VENV`` are for Sphinx documentation which is not being used at this time.  ``CFLAGS`` are the compiling flags we want to set in our compile command and ``LFLAGS`` are the linking flags we want to set in our compile command.
 
 
 **Makefile** Rules
@@ -99,7 +95,7 @@ documentation which is not being used at this time.  ``CFLAGS`` are the compilin
 Makefile Rules are set up in the following shape (must have tab before recipe)::
 	target : prerequisites
 		recipe
-``make`` will perform the first rule it comes to.  If you want to run a specific rule, enter the rule name after ``make``.  Example, ``make run`` will execute the ``run`` rule below (``.PHONY: run`` keeps ``make`` from doing something with the target, usually a file name, named ``run``)::
+The prerequisites must be completed first, so ``make`` looks for the dependencies of the prerequisites or for the rule specified in the prerequisites to run first, then completes the dependencies or runs the rule and returns to run this rule. ``make`` will perform the first rule it comes to.  If you want to run a specific rule, enter the rule name after ``make``.  Example, ``make run`` will execute the ``run`` rule below (``.PHONY: run`` keeps ``make`` from doing something with the target, usually a file name, named ``run``)::
 
 	.PHONY: all
 	all:	directories $(USRAPP) $(TSTAPP)
@@ -167,16 +163,12 @@ Makefile Rules are set up in the following shape (must have tab before recipe)::
 
  
 ``$@`` means left side of ``:`` and ``$^`` means right side of ``:``.
-****************************** NEED TEXT HERE **********************************************************
 
 
-What is this?
-=============
+Include
+=======
 
-what is this? ::
+The g++ compiler can be told to read all the source files and figure out what each one depends on. It does this by looking at the ``-include`` lines. The output of this step is a file called something.d (for depends). ::
 
 	# include compiler generated dependencies
 	-include $(BLD)/*.d
-
-****************************** NEED TEXT HERE **********************************************************
-iii
