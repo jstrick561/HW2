@@ -86,7 +86,9 @@ The Armv8-A architecture brings a number of new features. These include 64-bit d
 
 The Cortex-A53 can be implemented in two execution states: AArch32 and AArch64. The AArch64 state gives the Cortex-A53 its ability to execute 64-bit applications, while the AArch32 state allows the processor to execute existing Armv7-A applications.
 
-.. image:: Cortex-A53-large_678x452.png
+.. figure:: Cortex-A53-large_678x452.png
+
+	This is the caption.
 
 .. image:: maxresdefault.jpg
 
