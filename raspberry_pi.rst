@@ -88,7 +88,7 @@ The Cortex-A53 can be implemented in two execution states: AArch32 and AArch64. 
 
 .. image:: Cortex-A53-large_678x452.png
 
-.. image:: maxresdefaullt.jpg
+.. image:: maxresdefault.jpg
 
 
 Processor Assembly Language
