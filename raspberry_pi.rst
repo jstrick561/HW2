@@ -4,6 +4,12 @@ Raspberry Pi
 
 .. contents::
 
+Introduction
+************
+
+The sound of the motors burst the quiet room. The wheels begin spinning and off goes our Zumo Robot. It's alive!! Our first attempt at creating a use for the Raspberry Pi is a success.  Many hours of hard work by **Alan Mangold**, **Robert Reza** and **Jerry Strickland** of team ``Alpha`` has come to fruition.
+
+
 Board History
 *************
 
@@ -16,6 +22,7 @@ On the Raspberry Pi website they created 2 images that could be installed easily
 In Feburary 2014 they had been reported to have sold 4.5 millions boards, soon after this success they released the Model A+ and Model B+ which provided more GPIO’s and used less power to run. In early 2015 the Raspberry Pi 2 was announced with increased Mhz by 200 to bring it to 900Mhz and doubled the ram to make it 1GB. In early 2016 the Raspberry Pi 3 was released with again increased Mhz (now 1.2 Ghz), on-board WiFi and on-board Bluetooth.
 
 The official Raspberry Pi magazine announced in March of 2017 that over 12.5 million of the affordable little Linux boards have been sold since the original Pi was launched in 2012.
+
 
 Basic Board Setup
 *****************
@@ -47,6 +54,7 @@ L298N Motor Drive Controller Board
 Assorted Wire, Wood, Glue, Screws, etc. to build platform
 HC-SR04 Ultrasonic Distance Sensor Module
 Breadboard, Compacitors for Sensor
+
 
 Processor Architecture
 **********************
@@ -95,11 +103,13 @@ The Cortex-A53 can be implemented in two execution states: AArch32 and AArch64. 
 
 Processor Assembly Language
 ***************************
+
 The ARM Cortex-A53 is a microarchitecture implementing the ARMv8-A 64-bit instruction set designed by ARM Holdings.
 
 
 Demonstration Project
 *********************
+
 built robot
 
 Format sd drive
