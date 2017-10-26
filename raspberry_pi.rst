@@ -32,32 +32,32 @@ Basic Board Setup
 The Raspberry Pi 3 Model B builds upon the features of its predecessors with a new, faster processor on board to increase its speed. It also features WiFi and Bluetooth Low Energy capabilities to enhance the functionality and the ability to power more powerful devices over the USB ports.
 
 
-| •Quad Core 1.2GHz Broadcom BCM2837 64bit CPU
-| •1GB RAM
-| •BCM43438 WiFi and Bluetooth Low Energy (BLE) on board
-| •40-pin Extended GPIO
-| •4x USB 2 ports
-| •4 Pole stereo output and composite video port
-| •Full size HDMI
-| •CSI camera port for connecting a Raspberry Pi camera
-| •DSI display port for connecting a Raspberry Pi touchscreen display
-| •Micro SD port for loading your operating system and storing data
-| •Upgraded switched Micro USB power source up to 2.5A
-| •N.B. For warranty information, please go to www.farnell.com/raspberrypiwarranty
+- Quad Core 1.2GHz Broadcom BCM2837 64bit CPU
+- 1GB RAM
+- BCM43438 WiFi and Bluetooth Low Energy (BLE) on board
+- 40-pin Extended GPIO
+- 4x USB 2 ports
+- 4 Pole stereo output and composite video port
+- Full size HDMI
+- CSI camera port for connecting a Raspberry Pi camera
+- DSI display port for connecting a Raspberry Pi touchscreen display
+- Micro SD port for loading your operating system and storing data
+- Upgraded switched Micro USB power source up to 2.5A
+- N.B. For warranty information, please go to www.farnell.com/raspberrypiwarranty
 
 
 Developement Tools
 ******************
 
-| 2.4GHz Wireless Mini Keyboard
-| Mini Rocker Switch
-| Jackery Mini 3200mAh Portable Baterry Charger Power Bank
-| Zumo Chassis Kit
-| L298N Motor Drive Controller Board
-| 2x 6V 1400RPM Micro Speed Reduction Mort Mini Gear Box Motor
-| Assorted Wire, Wood, Glue, Screws, etc. to build platform
-| HC-SR04 Ultrasonic Distance Sensor Module
-| Breadboard and  Capacitors for Sensor
+- 2.4GHz Wireless Mini Keyboard
+- Mini Rocker Switch
+- Jackery Mini 3200mAh Portable Baterry Charger Power Bank
+- Zumo Chassis Kit
+- L298N Motor Drive Controller Board
+- 2x 6V 1400RPM Micro Speed Reduction Mort Mini Gear Box Motor
+- Assorted Wire, Wood, Glue, Screws, etc. to build platform
+- HC-SR04 Ultrasonic Distance Sensor Module
+- Breadboard and  Capacitors for Sensor
 
 
 
@@ -74,23 +74,23 @@ The Cortex-A53 processor has one to four cores, each with an L1 memory system an
 | Architecture	Armv8-A 
 | Multicore	1-4x Symmetrical Multiprocessing (SMP) within a single processor cluster, and multiple coherent SMP processor clusters through AMBA 4 technology
 | ISA Support	AArch32 for full backward compatibility with Armv7
-| 		AArch64 for 64-bit support and new architectural features
-| 		TrustZone security technology
-| 		NEON advanced SIMD
-| 		DSP & SIMD extensions
-| 		VFPv4 floating point
-| 		Hardware virtualization support
-
+|		AArch64 for 64-bit support and new architectural features
+|		TrustZone security technology
+|		NEON advanced SIMD
+|		DSP & SIMD extensions
+|		VFPv4 floating point
+|		Hardware virtualization support
+|
 https://developer.arm.com/products/processors/cortex-a/cortex-a53
 
 | Key features	In-order pipeline
-| 		Lower power consumption.
-| 		Extensive dual-issue capability
-| 		Increased peak instruction throughput via dual instruction decode and execution.
-| 		Advanced branch predictor
-| 		Increased branch hit rate with 6Kb Conditional Predictor and 256 entry indirect predictor.
-| 		Extensive power-saving features
-| 		Hierarchical clock gating, power domains, advanced retention modes.
+|		Lower power consumption.
+|		Extensive dual-issue capability
+|		Increased peak instruction throughput via dual instruction decode and execution.
+|		Advanced branch predictor
+|		Increased branch hit rate with 6Kb Conditional Predictor and 256 entry indirect predictor.
+|		Extensive power-saving features
+|		Hierarchical clock gating, power domains, advanced retention modes.
 
 Characteristics
 
@@ -118,17 +118,17 @@ Demonstration Project
 
 built robot
 
-Format sd drive
-load raspbian noob image
-booted sd disk in raspberry pi
-load Raspbian Jessie OS
-ran update
-load build-essential
-load git-core
-load vim-gtk
-ran update
-ran upgrade
-changed raspberry configuration for keyboard and language (US not UK)
-load docker
+- Format sd drive
+- load raspbian noob image
+- booted sd disk in raspberry pi
+- load Raspbian Jessie OS
+- ran update
+- load build-essential
+- load git-core
+- load vim-gtk
+- ran update
+- ran upgrade
+- changed raspberry configuration for keyboard and language (US not UK)
+- load docker
 
 created robot programs
