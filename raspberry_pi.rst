@@ -1,6 +1,6 @@
-************
-Raspberry Pi
-************
+********************
+Raspberry Pi Project
+********************
 
 .. contents::
 
@@ -8,6 +8,8 @@ Introduction
 ************
 
 The sound of the motors burst the quiet room. The wheels begin spinning and off goes our Zumo Robot. It's alive!! Our first attempt at creating a use for the Raspberry Pi is a success.  Many hours of hard work by **Alan Mangold**, **Robert Reza** and **Jerry Strickland** of team ``Alpha`` has come to fruition.
+
+Contemplating what we could do with a Raspberry Pi left us baffled, we did not want to just make it run a program (anyone can do that). We wanted it to move, speak, and have fun. So we started looking on Google for projects that did just that.  We searched and searched and found robots. We examined several and decided that with the time constraints (and money constraints) we would create a Zumo Robot, but that was not enough, we had to go farther. So we added a range finder
 
 
 Board History
