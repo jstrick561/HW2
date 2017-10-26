@@ -72,12 +72,15 @@ https://developer.arm.com/products/processors/cortex-a/cortex-a53
 The Cortex-A53 processor has one to four cores, each with an L1 memory system and a single shared L2 cache. 
 
 Architecture
+
 - Armv8-A 
 
 Multicore
+
 - 1-4x Symmetrical Multiprocessing (SMP) within a single processor cluster, and multiple coherent SMP processor clusters through AMBA 4 technology
 
 ISA Support
+
 - AArch32 for full backward compatibility with Armv7
 - AArch64 for 64-bit support and new architectural features
 - TrustZone security technology
@@ -88,6 +91,7 @@ ISA Support
 https://developer.arm.com/products/processors/cortex-a/cortex-a53
 
 Key features
+
 - In-order pipeline
 - Lower power consumption.
 - Extensive dual-issue capability
