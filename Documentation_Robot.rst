@@ -7,15 +7,18 @@ Robot Class Documentation
 Robot Class
 ***********
 
-Description: This class turns on and off the pins needed to drive the robot. The pins we are using are 7,13,11,15,16, and 18. All these pins are output except 18 which is input. 
+This class turns on and off the pins needed to drive the robot. The pins we are using are 7,13,11,15,16, and 18. All these pins are output except 18 which is input. 
 
 
 External libraries used in Project
 **********************************
 
 **RPi.GPIO** - To control the GPIO pins
+
 **time** - To pause the application for a set amout of seconds
+
 **os** - To shut down the robot after running
+
 **curses** - For keyboard support
 
 
