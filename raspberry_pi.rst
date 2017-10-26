@@ -9,7 +9,7 @@ Introduction
 
 The sound of the motors burst the quiet room. The wheels begin spinning and off goes our Zumo Robot. It's alive!! Our first attempt at creating a use for the Raspberry Pi is a success.  Many hours of hard work by **Alan Mangold**, **Robert Reza** and **Jerry Strickland** of team ``Alpha`` has come to fruition.
 
-Contemplating what we could do with a Raspberry Pi left us baffled, we did not want to just make it run a program (anyone can do that). We wanted it to move, speak, and have fun. So we started looking on Google for projects that did just that.  We searched and searched and found robots. We examined several and decided that with the time constraints (and money constraints) we would create a Zumo Robot, but that was not enough, we had to go farther. So we added a range finder
+Contemplating what we could do with a Raspberry Pi left us baffled, we did not want to just make it run a program (anyone can do that). We wanted it to move, speak, and have fun. So we started looking on Google for projects that did just that.  We searched and searched and found robots. We examined several and decided that with the time constraints (and money constraints) we would create a Zumo Robot, but that was not enough, we had to go farther. So we added a distance sensor module to make sure we don't run into walls.
 
 
 Board History
@@ -28,34 +28,37 @@ The official Raspberry Pi magazine announced in March of 2017 that over 12.5 mil
 
 Basic Board Setup
 *****************
+
 The Raspberry Pi 3 Model B builds upon the features of its predecessors with a new, faster processor on board to increase its speed. It also features WiFi and Bluetooth Low Energy capabilities to enhance the functionality and the ability to power more powerful devices over the USB ports.
 
-•Quad Core 1.2GHz Broadcom BCM2837 64bit CPU
-•1GB RAM
-•BCM43438 WiFi and Bluetooth Low Energy (BLE) on board
-•40-pin Extended GPIO
-•4x USB 2 ports
-•4 Pole stereo output and composite video port
-•Full size HDMI
-•CSI camera port for connecting a Raspberry Pi camera
-•DSI display port for connecting a Raspberry Pi touchscreen display
-•Micro SD port for loading your operating system and storing data
-•Upgraded switched Micro USB power source up to 2.5A
-•N.B. For warranty information, please go to www.farnell.com/raspberrypiwarranty
+
+| •Quad Core 1.2GHz Broadcom BCM2837 64bit CPU
+| •1GB RAM
+| •BCM43438 WiFi and Bluetooth Low Energy (BLE) on board
+| •40-pin Extended GPIO
+| •4x USB 2 ports
+| •4 Pole stereo output and composite video port
+| •Full size HDMI
+| •CSI camera port for connecting a Raspberry Pi camera
+| •DSI display port for connecting a Raspberry Pi touchscreen display
+| •Micro SD port for loading your operating system and storing data
+| •Upgraded switched Micro USB power source up to 2.5A
+| •N.B. For warranty information, please go to www.farnell.com/raspberrypiwarranty
 
 
 Developement Tools
 ******************
 
-2.4GHz Wireless Mini Keyboard
-Mini Rocker Switch
-Jackery Mini 3200mAh Portable Baterry Charger Power Bank
-Zumo Chassis Kit
-L298N Motor Drive Controller Board
-2x 6V 1400RPM Micro Speed Reduction Mort Mini Gear Box Motor
-Assorted Wire, Wood, Glue, Screws, etc. to build platform
-HC-SR04 Ultrasonic Distance Sensor Module
-Breadboard, Compacitors for Sensor
+| 2.4GHz Wireless Mini Keyboard
+| Mini Rocker Switch
+| Jackery Mini 3200mAh Portable Baterry Charger Power Bank
+| Zumo Chassis Kit
+| L298N Motor Drive Controller Board
+| 2x 6V 1400RPM Micro Speed Reduction Mort Mini Gear Box Motor
+| Assorted Wire, Wood, Glue, Screws, etc. to build platform
+| HC-SR04 Ultrasonic Distance Sensor Module
+| Breadboard and  Capacitors for Sensor
+
 
 
 Processor Architecture
@@ -65,28 +68,29 @@ This part name is BCM2837.
 This product has ARMv8 Quad Core Cortex A53 Processor @ 1.2 GHz(4x ~2760 DMIPS) functions.
 
 https://developer.arm.com/products/processors/cortex-a/cortex-a53
+
 The Cortex-A53 processor has one to four cores, each with an L1 memory system and a single shared L2 cache. 
 
-Architecture	Armv8-A 
-Multicore	1-4x Symmetrical Multiprocessing (SMP) within a single processor cluster, and multiple coherent SMP processor clusters through AMBA 4 technology
- 
-ISA Support	AArch32 for full backward compatibility with Armv7
-		AArch64 for 64-bit support and new architectural features
-		TrustZone security technology
-		NEON advanced SIMD
-		DSP & SIMD extensions
-		VFPv4 floating point
-		Hardware virtualization support
+| Architecture	Armv8-A 
+| Multicore	1-4x Symmetrical Multiprocessing (SMP) within a single processor cluster, and multiple coherent SMP processor clusters through AMBA 4 technology
+| ISA Support	AArch32 for full backward compatibility with Armv7
+| 		AArch64 for 64-bit support and new architectural features
+| 		TrustZone security technology
+| 		NEON advanced SIMD
+| 		DSP & SIMD extensions
+| 		VFPv4 floating point
+| 		Hardware virtualization support
 
 https://developer.arm.com/products/processors/cortex-a/cortex-a53
-Key features	In-order pipeline
-		Lower power consumption.
-		Extensive dual-issue capability
-		Increased peak instruction throughput via dual instruction decode and execution.
-		Advanced branch predictor
-		Increased branch hit rate with 6Kb Conditional Predictor and 256 entry indirect predictor.
-		Extensive power-saving features
-		Hierarchical clock gating, power domains, advanced retention modes.
+
+| Key features	In-order pipeline
+| 		Lower power consumption.
+| 		Extensive dual-issue capability
+| 		Increased peak instruction throughput via dual instruction decode and execution.
+| 		Advanced branch predictor
+| 		Increased branch hit rate with 6Kb Conditional Predictor and 256 entry indirect predictor.
+| 		Extensive power-saving features
+| 		Hierarchical clock gating, power domains, advanced retention modes.
 
 Characteristics
 
