@@ -1,6 +1,6 @@
-*******
-Docker 
-*******
+**********************
+Docker Running Pi-hole
+**********************
 
 Overview
 *********
@@ -22,14 +22,14 @@ Download the latest image::
 
 	docker pull diginc/pi-hole:arm
 
-Build the container::
+Build the container (replace xxxx with host ip)::
 
 	docker run -d \
 	--name pihole \
 	-p 53:53/tcp -p 53:53/udp -p 80:80 \
 	-v "${DOCKER_CONFIGS}/pihole/:/etc/pihole/" \
 	-v "${DOCKER_CONFIGS}/dnsmasq.d/:/etc/dnsmasq.d/" \
-	-e ServerIP="**host ip goes here**" \
+	-e ServerIP="xxxx" \
 	-e ServerIPv6="${IPv6}" \
 	--restart=always \
 	diginc/pi-hole:arm
@@ -38,8 +38,8 @@ Make sure container is created and get container number::
 
 	docker ps -a
 
-Start the container::
+Start the container (replace xxxx with container number)::
 
-	docker start **container_number**
+	docker start xxxx
 
 After that change the DNS server on your machines to the IP address of the Pi-hole host and most ads on your network will be blocked.  You can access pi-hole on the client machines by entering: http://pi.hole/admin. 
