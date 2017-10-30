@@ -9,13 +9,13 @@ Introduction
 
 The sound of the motors burst the quiet room. The wheels begin spinning and off goes our Zumo Robot. It's alive!! Our first attempt at creating a use for the Raspberry Pi is a success. Many hours of hard work by **Alan Mangold**, **Robert Reza** and **Jerry Strickland** of team ``Alpha`` has come to fruition.
 
-Contemplating what we could do with a Raspberry Pi left us baffled, we did not want to just make the Pi run a program (anyone can do that). We wanted it to do something (like move, speak or shoot aliens) and above all have fun. So we started looking on Google for projects that would do just that.  We searched and searched and found robots. Now, that's a possibility!  We examined several and decided that with the time constraints (and money constraints) we would create a Zumo Robot, but just moving was not enough, we had to go farther. So we would add a distance sensor module to make sure it didn't run into walls and program it to dance. So our adventure begins.
+Contemplating what we could do with a Raspberry Pi left us baffled. We did not want to just make the Pi run a program (anyone can do that). We wanted it to do something (like move, speak or shoot aliens) and above all have fun. So we started looking on Google for projects that would do just that.  We searched and searched and found robots. Now, that's a possibility!  We examined several and decided that with the time constraints (and money constraints) we would create a Zumo Robot, but just moving was not enough, we had to go farther. So we would add a distance sensor module to make sure it didn't run into walls and program it to dance. So our adventure begins.
 
 
 Board History
 *************
 
-We began by examining the history of the Raspberry Pi. The Raspberry Pi was created in Febuary 2012 by the Raspberry Pi Foundation, Oringially setup to promote and teach basic computer science in schools and colleges around the UK. They initially released 2 Devices the Model A and the Model B, these computers ranged in specifications and cabilities. Soon after the release of these products a community was formed and thousands of “Tech-Heads” bought one and started to create new projects with it, for instance one project was to setup a Home Media Centre and play the popular game Minecraft.
+We began by examining the history of the Raspberry Pi. The Raspberry Pi was created in Febuary 2012 by the Raspberry Pi Foundation, Originally setup to promote and teach basic computer science in schools and colleges around the UK. They initially released 2 Devices the Model A and the Model B, these computers ranged in specifications and cabilities. Soon after the release of these products a community was formed and thousands of “Tech-Heads” bought one and started to create new projects with it, for instance one project was to setup a Home Media Centre and play the popular game Minecraft.
 
 The products were so popular due to their low cost (ranging from $25 – $35), their efficiency and durability. This made them easy to modify and create projects.  The device ran Linux, a popular open-source OS for developers.
 
@@ -74,6 +74,41 @@ Processor Assembly Language
 We also discovered that the ARM Cortex-A53's microarchitecture is implementing the ARMv8-A 64-bit instruction set designed by ARM Holdings.
 
 
+Performance
+***********
+
+The Raspberry Pi has different performance and power saving modes for the cpu.
+  
+- Conservative: Smoothly change cpu frequency depending on cpu load
+- Performance: Always use max cpu frequency
+- Powersave: Always use min cpu frequency
+- On demand: Change cpu frequency depending on cpu load, min or max.
+- Userspace: Allow user space daemon to control cpu frequency
+
+These can be changed with the following line::
+
+echo "performance" |sudo tee /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+
+
+Overclocking
+************
+
+The Raspberry Pi 3's stock frequency is 1.2Ghz, but if more speed is needed the cpu can be overclocked.  The max speed you will be able to get out of your chip is dependent on the chip itself and the cooling you have installed on the arm cpu.  There are aftermarket aluminum heat sinks that can be applied to the cpu with thermal tape to help dissipate the additional heat brought on from the higher clock speed.  Other more extreme heat sinks are available as well.
+
+To change the arm cpu clock speed bring up the /boot/config.txt file as follows::
+
+sudo nano /boot/config.txt
+
+The arm_freq field is the arm cpu clock frequency.  You will see that the stock frequency is set to 1200. 
+
+In testing I was able to get my personal RaspberryPi 3 to 1250mhz. ::
+
+	pi@raspberrypi:~ $ sudo cat /sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_cur_freq
+	1250000
+
+When I tried for 1300mhz the machine would not boot.  In a no boot situation you remove the sd card, insert it in a personal computer and navigate to the config.txt file. When you open the file change the arm_freq back to a working frequency and reinstall it back into the Raspberry Pi.
+
+
 Developement Tools
 ******************
 
@@ -85,7 +120,7 @@ It was now time to evaluate what software and hardware was needed to build our r
 - Git-core
 - Docker
 
-To build our Zumo Robot, we needed a flame thrower, grenade launcher and a space alien ... no, no, no, what was I thinking. We needed the following parts:
+To build our Zumo Robot, we needed a flame thrower, grenade launcher and a space alien ... no, no, no, what was I thinking? We needed the following parts:
 
 - Raspberry Pi 3
 - Zumo Chassis Kit
@@ -104,7 +139,7 @@ Demonstration Project
 
 The building began: format sd drive; load raspbian noob image; boot sd disk in raspberry pi loading Raspbian Jessie OS; run update; load build-essential; load git-core; load vim-gtk; run update again; run upgrade; change raspberry configuration for keyboard and language (US not UK); load docker; cut; cut; solder; bang; screw; curse; solder again; bang; screw; curse some more; drill; bang; screw; and POOF!! **The Zumo Robot**.
 
-Oh no, now what! Oh, the program: program; program; test; program; test; start over; program; test; program; and POOF again!! The Zumo Robot moves. We completed our creation (as if you every complete a robot).
+Oh no, now what! Oh, the program: program; program; test; program; test; start over; program; test; program; and POOF again!! The Zumo Robot moves. We completed our creation (as if you ever complete a robot).
 
 As a quick recap, we got a Raspberry Pi and sd card. Loaded the sd card with software. Purchased a Zumo chassis, couple of small motors and a controller board to spin and control the wheels. Purchased a wireless keyboard and power bank to run the Raspberry Pi. Added a Distance Sensor to the mix. Put it all together. Programmed it up and POOF!! The Zumo Robot.
 
