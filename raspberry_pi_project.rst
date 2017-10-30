@@ -87,7 +87,7 @@ The Raspberry Pi has different performance and power saving modes for the cpu.
 
 These can be changed with the following line::
 
-echo "performance" |sudo tee /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+	echo "performance" |sudo tee /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
 
 
 Overclocking
@@ -97,7 +97,7 @@ The Raspberry Pi 3's stock frequency is 1.2Ghz, but if more speed is needed the 
 
 To change the arm cpu clock speed bring up the /boot/config.txt file as follows::
 
-sudo nano /boot/config.txt
+	sudo nano /boot/config.txt
 
 The arm_freq field is the arm cpu clock frequency.  You will see that the stock frequency is set to 1200. 
 
